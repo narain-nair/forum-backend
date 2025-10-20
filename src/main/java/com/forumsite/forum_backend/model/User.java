@@ -5,10 +5,9 @@ import jakarta.persistence.Id;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 
-import org.checkerframework.checker.units.qual.C;
-
 import jakarta.persistence.Column;
-import jakarta.persistence.Table;
+
+import java.util.*;
 
 @Entity
 public class User {
@@ -26,6 +25,9 @@ public class User {
     @Column(nullable = false)
     private String password;
 
+    @Column(nullable = false)
+    private List<Post> posts;
+
     // Constructors
 
     public User() {
@@ -35,6 +37,7 @@ public class User {
         this.username = username;
         this.email = email;
         this.password = password;
+        this.posts = new ArrayList<>();
     }
 
     // Getters and Setters
@@ -69,5 +72,13 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public List<Post> getPosts() {
+        return posts;
+    }
+
+    public void setPosts(List<Post> posts) {
+        this.posts = posts;
     }
 }
