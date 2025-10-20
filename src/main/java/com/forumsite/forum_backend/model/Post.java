@@ -4,6 +4,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.PrePersist;
+import jakarta.persistence.PreUpdate;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 
@@ -13,8 +15,8 @@ import java.time.LocalDateTime;
 import jakarta.persistence.Column;
 import jakarta.persistence.Table;
 
+@Entity
 public class Post {
-    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -29,11 +31,14 @@ public class Post {
     private LocalDateTime createdAt;
 
     @Column(nullable = false)
+    private LocalDateTime updatedAt;
+
     @ManyToOne
+    @JoinColumn(name = "author_id", nullable = false)
     private User author;
 
-    @JoinColumn(name = "thread_id", nullable = false)
     @ManyToOne
+    @JoinColumn(name = "thread_id", nullable = false)
     private Thread thread;
 
     // Constructors
@@ -95,5 +100,16 @@ public class Post {
 
     public void setThread(Thread thread) {
         this.thread = thread;
+    }
+
+    @PrePersist
+    protected void onCreate() {
+        this.createdAt = LocalDateTime.now();
+        this.likeCount = 0;
+    }
+
+    @PreUpdate
+    protected void onUpdate() {
+        this.updatedAt = LocalDateTime.now();
     }
 }
