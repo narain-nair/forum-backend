@@ -13,8 +13,7 @@ import java.time.LocalDateTime;
 
 
 import jakarta.persistence.Column;
-import jakarta.persistence.Table;
-
+ 
 @Entity
 public class Post {
     @Id
