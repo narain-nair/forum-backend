@@ -2,6 +2,7 @@ package com.forumsite.forum_backend.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -31,7 +32,7 @@ public class Post {
     @ManyToOne
     private User author;
 
-    @Column(nullable = false)
+    @JoinColumn(name = "thread_id", nullable = false)
     @ManyToOne
     private Thread thread;
 
