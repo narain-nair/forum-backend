@@ -1,10 +1,12 @@
 package com.forumsite.forum_backend.model;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
-
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 
 import java.util.*;
@@ -25,8 +27,11 @@ public class User {
     @Column(nullable = false)
     private String password;
 
-    @Column(nullable = false)
-    private List<Post> posts;
+    @OneToMany(mappedBy = "author", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Post> posts = new ArrayList<>();
+
+    @OneToMany(mappedBy = "author", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Thread> threads = new ArrayList<>();
 
     // Constructors
 
@@ -37,7 +42,6 @@ public class User {
         this.username = username;
         this.email = email;
         this.password = password;
-        this.posts = new ArrayList<>();
     }
 
     // Getters and Setters
@@ -80,5 +84,13 @@ public class User {
 
     public void setPosts(List<Post> posts) {
         this.posts = posts;
+    }
+
+    public List<Thread> getThreads() {
+        return threads;
+    }
+
+    public void setThreads(List<Thread> threads) {
+        this.threads = threads;
     }
 }
