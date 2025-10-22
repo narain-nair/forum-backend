@@ -6,14 +6,8 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
-import org.springframework.boot.test.context.SpringBootTest;
 
-import com.forumsite.forum_backend.dto.CreatePostRequest;
-import com.forumsite.forum_backend.model.Post;
-import com.forumsite.forum_backend.repository.ThreadRepository;
-import com.forumsite.forum_backend.service.PostService;
 import com.forumsite.forum_backend.service.ThreadService;
 import com.forumsite.forum_backend.model.Thread;
 
