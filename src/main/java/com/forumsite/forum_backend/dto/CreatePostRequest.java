@@ -1,8 +1,11 @@
 package com.forumsite.forum_backend.dto;
 
+import com.forumsite.forum_backend.model.User;
+
 public class CreatePostRequest {
     private long threadId;
     private String content;
+    private User author;
 
     public long getThreadId() {
         return threadId;
@@ -18,5 +21,13 @@ public class CreatePostRequest {
 
     public void setContent(String content) {
         this.content = content;
+    }
+
+    public User getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(User author) {
+        this.author = author;
     }
 }
