@@ -7,16 +7,14 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-import org.springframework.context.annotation.Import;
+import org.springframework.boot.test.context.SpringBootTest;
 
 import com.forumsite.forum_backend.dto.CreatePostRequest;
 import com.forumsite.forum_backend.model.Post;
 import com.forumsite.forum_backend.repository.ThreadRepository;
 import com.forumsite.forum_backend.model.Thread;
 
-@DataJpaTest
-@Import(PostService.class)
+@SpringBootTest
 class PostServiceTest {
     @Autowired private PostService postService;
     @Autowired private ThreadRepository threadRepository;
